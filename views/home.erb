@@ -1,0 +1,9 @@
+<h3>Shopify Sinatra App</h3>
+<p>Welcome!</p>
+
+<h3>Products</h3>
+<ul>
+  <% @products.each do |product| %>
+    <li><a href=<%="#{current_shop_url}/admin/products/#{product.id}"%> target="_blank"> <%= product.id %> </a></li>
+  <% end %>
+</ul>

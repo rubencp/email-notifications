@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://cdn.shopify.com/s/assets/external/app.js"></script>
+  <script type="text/javascript">
+    ShopifyApp.init({
+      apiKey: "<%= SinatraApp.settings.api_key %>",
+      shopOrigin: "<%= current_shop_url %>",
+      debug: true
+    });
+  </script>
+
+  <%= bootstrap_assets %>
+</head>
+
+<body>
+  <div class="container">
+    <%= erb :'_top_bar', layout: false, locals: locals %>
+    <%= erb :'_flash_messages', layout: false, locals: locals %>
+    <%= yield %>
+  </div>
+</body>
+</html>
