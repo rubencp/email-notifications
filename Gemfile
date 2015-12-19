@@ -5,6 +5,7 @@ gem 'shopify-sinatra-app', '~> 0.2.0', branch: 'master'
 gem 'sinatra-activerecord'
 gem 'sinatra-twitter-bootstrap', require: 'sinatra/twitter-bootstrap'
 gem 'rack-flash3', require: 'rack-flash'
+gem 'sendgrid-ruby'
 
 group :production do
   gem 'pg'

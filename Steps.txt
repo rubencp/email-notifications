@@ -1,0 +1,9 @@
+gem install shopify-sinatra-app
+
+shopify-sinatra-app-generator new email-notifications
+
+cd email-notifications
+
+bundle install
+
+foreman run bundle exec rackup config.ru
