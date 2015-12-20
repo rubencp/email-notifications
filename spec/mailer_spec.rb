@@ -4,7 +4,7 @@ RSpec.describe Mailer do
   let(:emails) { ['hola@adios.com', 'adios@hola.com'] }
   let(:params) { { order_number: '1', client_name: 'Ruben' } }
   let(:sender) { double('Sender') }
-  let(:mailer) { described_class.new(sender, emails, params) }
+  let(:mailer) { described_class.new(emails, params, sender) }
 
   it 'creates request to create emails' do
     emails.each do |email|

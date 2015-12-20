@@ -1,5 +1,4 @@
 require 'sinatra/shopify-sinatra-app'
-require 'sendgrid-ruby'
 require './lib/mailer'
 
 class SinatraApp < Sinatra::Base
@@ -33,7 +32,7 @@ class SinatraApp < Sinatra::Base
       client_name:  webhook_data["shipping_address"]["name"]
     }
 
-    Mailer.new(SendGridSender.new, ENV['mails'], email_params).send
+    Mailer.new(ENV['mails'], email_params).send
   end
 
   private
