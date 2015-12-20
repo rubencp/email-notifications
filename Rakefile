@@ -1,5 +1,6 @@
 require 'sinatra/activerecord/rake'
 require 'rake/testtask'
+require 'resque/tasks'
 require './lib/app'
 
 task :creds2heroku do
