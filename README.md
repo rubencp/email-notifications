@@ -1,5 +1,3 @@
-New Email Notificatins for Shopify
-=======================
 
 Getting Started
 ---------------
@@ -42,6 +40,9 @@ SHOPIFY_API_KEY=<your api key>
 SHOPIFY_SHARED_SECRET=<your shared secret>
 SHOPIFY_REDIRECT_URI="<your redirect_uri>"
 SECRET=<generate a random string to encrypt credentials with>
+SENDGRID_PASSWORD=<>
+SENDGRID_USERNAME=<>
+FROM=no-reply@shop.com
 ```
 
 SHOPIFY_REDIRECT_URI=https://43ab1bb5.ngrok.com/auth/shopify/callback
