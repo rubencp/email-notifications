@@ -1,3 +1,5 @@
+require './lib/customers'
+
 class OrderCreateJob
    @queue = :default
    
@@ -7,6 +9,6 @@ class OrderCreateJob
       client_name:  webhook_data["shipping_address"]["name"]
     }
 
-    Mailer.new.send([ENV['TEST_MAIL']], email_params)
+    Mailer.new.send(Customers.for(:order_create), email_params)
   end
 end

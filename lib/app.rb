@@ -1,6 +1,7 @@
 require 'sinatra/shopify-sinatra-app'
 
 require './lib/mailer'
+require './lib/customers'
 require './lib/jobs/order_create_job'
 
 class SinatraApp < Sinatra::Base
@@ -10,7 +11,7 @@ class SinatraApp < Sinatra::Base
 
   get '/' do
     shopify_session do
-      @users = ShopifyAPI::Customer.find(:all, params: { limit: 10 })
+      @users = Customers.for(:order_create)
       erb :home
     end
   end
