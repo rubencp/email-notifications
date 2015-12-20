@@ -7,6 +7,6 @@ class OrderCreateJob
       client_name:  webhook_data["shipping_address"]["name"]
     }
 
-    Mailer.new.send(ENV['MAILS'], email_params)
+    Mailer.new.send([ENV['TEST_MAIL']], email_params)
   end
 end

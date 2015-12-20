@@ -9,7 +9,7 @@ RSpec.describe OrderCreateJob do
   describe 'perform' do
     it 'sends correct params to Mailer' do
       expect_any_instance_of(Mailer).to receive(:send).
-        with(ENV['MAILS'], email_params)
+        with([ENV['TEST_MAIL']], email_params)
 
       OrderCreateJob.perform('shop_name', 'shop_token', webhook_data)
     end
