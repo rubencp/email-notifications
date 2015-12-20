@@ -1,4 +1,4 @@
-require 'shopify_api'
+require 'sinatra/shopify-sinatra-app'
 
 class Customers
   def self.for(group)
