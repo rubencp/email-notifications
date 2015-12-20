@@ -28,9 +28,27 @@ class SinatraApp < Sinatra::Base
   end
 
   post '/order_create' do
+
     webhook_session do |params|
-      send_email(params.to_s)
+      webhook_job(OrderCreateJob)      
     end
+
+
+  end
+
+  class OrderCreateJob
+   @queue = :default
+   
+   def self.perform(shop_name, shop_token, webhook_data)
+     client = SendGrid::Client.new(api_user: ENV['SENDGRID_USERNAME'], api_key: ENV['SENDGRID_PASSWORD'])
+     mail = SendGrid::Mail.new do |m|
+       m.to = 'ruben.cervantes@gmail.com'
+       m.from = 'taco@test.com'
+       m.subject = 'Hello world!'
+       m.html = webhook_data.to_s
+      end
+    client.send(mail)
+   end
   end
 
   private
