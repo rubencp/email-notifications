@@ -1,22 +1,22 @@
 require 'sendgrid-ruby'
 
 class Mailer
-	def initialize(emails, params, sender=SendGridSender.new)
-		@emails = emails
-		@sender = sender
-		@subject = "Pedido ##{params[:order_number]} realizado por #{params[:client_name]}"
-	end
+  def initialize(sender=SendGridSender.new)
+    @sender = sender
+  end
 
-	def send
-		@emails.each do |email|
-			@sender.mail(email, ENV['FROM'], @subject, ENV['ORDER_TEMPLATE'])
-		end
-	end
+  def send(emails, params)
+    subject = "Pedido ##{params[:order_number]} realizado por #{params[:client_name]}"
+
+    emails.each do |email|
+      @sender.mail(email, ENV['FROM'], subject, ENV['ORDER_TEMPLATE'])
+    end
+  end
 
   class SendGridSender
     def initialize
       @client = SendGrid::Client.new(api_user: ENV['SENDGRID_USERNAME'],
-        api_key: ENV['SENDGRID_PASSWORD'])
+                                     api_key: ENV['SENDGRID_PASSWORD'])
     end
 
     def mail(to, from, subject, html)

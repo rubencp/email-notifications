@@ -1,5 +1,7 @@
 require 'sinatra/shopify-sinatra-app'
+
 require './lib/mailer'
+require './lib/jobs/order_create_job'
 
 class SinatraApp < Sinatra::Base
   register Sinatra::Shopify
@@ -21,18 +23,6 @@ class SinatraApp < Sinatra::Base
 
   post '/order_create' do
     webhook_job(OrderCreateJob)
-  end
-
-  class OrderCreateJob
-   @queue = :default
-   
-   def self.perform(shop_name, shop_token, webhook_data)
-    email_params = {
-      order_number: webhook_data["order_number"],
-      client_name:  webhook_data["shipping_address"]["name"]
-    }
-
-    Mailer.new(ENV['mails'], email_params).send
   end
 
   private
