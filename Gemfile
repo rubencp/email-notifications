@@ -7,6 +7,8 @@ gem 'sinatra-twitter-bootstrap', require: 'sinatra/twitter-bootstrap'
 gem 'rack-flash3', require: 'rack-flash'
 gem 'sendgrid-ruby'
 
+gem 'resque-web'
+
 group :production do
   gem 'pg'
 end

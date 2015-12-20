@@ -28,12 +28,8 @@ class SinatraApp < Sinatra::Base
   end
 
   post '/order_create' do
-
-    webhook_session do |params|
-      webhook_job(OrderCreateJob)      
-    end
-
-
+    webhook_job(OrderCreateJob)
+    puts "webhook_job..."
   end
 
   class OrderCreateJob
