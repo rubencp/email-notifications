@@ -29,4 +29,5 @@ group :test do
   gem 'minitest'
   gem 'rack-test'
   gem 'fakeweb'
+  gem 'rspec'
 end
